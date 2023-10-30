@@ -1,6 +1,6 @@
 "use client";
 import { AiOutlineMenu } from "react-icons/ai";
-import { useCallback, useState } from "react";
+import { use, useCallback, useState } from "react";
 import { signOut } from "next-auth/react";
 import { SafeUser } from "@/app/types";
 import Avatar from "../Avatar";
@@ -8,12 +8,15 @@ import MenuItem from "./MenuItem";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
 import useLoginModal from "@/app/hooks/useLoginModal";
 import useRentModal from "@/app/hooks/useRentModal";
+import { Router } from "next/router";
+import { useRouter } from "next/navigation";
 
 interface UsermenuProps {
   currentUser?: SafeUser | null;
 }
 
 const Usermenu: React.FC<UsermenuProps> = ({ currentUser }) => {
+  const router = useRouter();
   const RegisterModal = useRegisterModal();
   const LoginModal = useLoginModal();
   const RentModal = useRentModal();
@@ -57,7 +60,12 @@ const Usermenu: React.FC<UsermenuProps> = ({ currentUser }) => {
           <div className="flex flex-col cursor-pointer">
             {currentUser ? (
               <>
-                <MenuItem onClick={() => {}} label="My trips" />
+                <MenuItem
+                  onClick={() => {
+                    router.push("/trips");
+                  }}
+                  label="My trips"
+                />
                 <MenuItem onClick={() => {}} label="My favorites" />
                 <MenuItem onClick={() => {}} label="My reservations" />
                 <MenuItem onClick={() => {}} label="My properties" />
