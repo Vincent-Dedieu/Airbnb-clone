@@ -10,7 +10,11 @@ import dynamic from "next/dynamic";
 const Map = dynamic(() => import("../Map"), { ssr: false });
 
 interface ListingInfoProps {
-  user?: SafeUser;
+  user: SafeUser;
+  description: string;
+  guestCount: number;
+  roomCount: number;
+  bathroomCount: number;
   category:
     | {
         icon: IconType;
@@ -18,11 +22,7 @@ interface ListingInfoProps {
         description: string;
       }
     | undefined;
-  roomCount: number;
-  guestCount: number;
-  bathroomCount: number;
   locationValue: string;
-  description: string;
 }
 
 const ListingInfo: React.FC<ListingInfoProps> = ({
