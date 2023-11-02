@@ -10,11 +10,11 @@ const Logo = () => {
       onClick={() => router.push("/")}
       alt="logo"
       className="hidden md:block cursor-pointer"
-      height="100"
-      width="100"
-      style={{ width: "auto", height: "auto" }} // to avoid warning in the console
+      height="170"
+      width="170"
+      //style={{ width: "auto", height: "auto" }} // to avoid warning in the console
       priority={true} // to avoid another warning in the console (LCP)
-      src="/images/airbnb-logo.png"
+      src="/images/airbnb-clone.png"
     />
   );
 };
